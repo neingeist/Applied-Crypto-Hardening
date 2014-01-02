@@ -1,11 +1,23 @@
 \begin{titlepage}
   \begin{center}
-    \includegraphics[scale=0.5]{img/logo}
-    \vspace{45pt}
-    \HorRule
-    \medskip
-    {\fontsize{35}{36} \bfseries Applied Crypto Hardening\par}
-    \bigskip
+    \iftoggle{ereader}{%
+      \includegraphics[scale=0.3]{img/logo}
+      \vspace{12pt}
+    }{%
+      \includegraphics[scale=0.5]{img/logo}
+      \vspace{45pt}
+    }
+    \iftoggle{ereader}{%
+      \HorRule
+      \smallskip
+      {\fontsize{20}{20} \bfseries Applied Crypto Hardening\par}
+      \medskip
+    }{%
+      \HorRule
+      \medskip
+      {\fontsize{35}{36} \bfseries Applied Crypto Hardening\par}
+      \bigskip
+    }
   \end{center}
   \begin{flushleft}
     {\large \color{intersectgreen} Wolfgang Breyha, David Durvaux, Tobias
@@ -13,12 +25,12 @@
       Adi Kriegisch, Ulrich P\"oschl, Ramin Sabet, Berg San, Ralf
       Schlatterbeck, Thomas Schreck, Aaron Zauner, Pepi Zawodsky
       \par}
-    \bigskip
+    \iftoggle{ereader}{\smallskip}{\bigskip}
     (University of Vienna, CERT.be, KIT-CERT, CERT.at, IAIK, coretec.at, FH
     Campus Wien, VRVis, MilCERT Austria, A-Trust, Runtux.com,
     Friedrich-Alexander University Erlangen-Nuremberg, azet.org, maclemon.at)
   \end{flushleft}
-  \medskip
+  \iftoggle{ereader}{}{\medskip}
   \HorRule
   \begin{center}
     \today

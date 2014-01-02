@@ -15,12 +15,25 @@
 
 \usepackage{fixltx2e}
 
+% For E-readers
+\usepackage{etoolbox}
+\newtoggle{ereader}
+\toggletrue{ereader}
+
 % Setup KOMA script
 \usepackage{scrhack}
+\iftoggle{ereader}{%
+\KOMAoptions{paper=8.5cm:11.4cm%
+  ,fontsize=9pt%
+  ,DIV=70%
+  ,parskip=true%
+}
+}{%
 \KOMAoptions{paper=a4%
   ,fontsize=10pt%
   ,DIV=12%
   ,parskip=true%
+}
 }
 
 % Language
@@ -60,7 +73,11 @@
 \usepackage[final]{listings}
 
 % The page
-\usepackage[footsepline]{scrpage2}
+\iftoggle{ereader}{%
+  \usepackage{scrpage2}
+}{%
+  \usepackage[footsepline]{scrpage2}
+}
 \usepackage{lastpage}
 
 % Misc

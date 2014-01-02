@@ -33,15 +33,22 @@
 
 % Page foot
 \setkomafont{pagefoot}{\normalfont\sffamily\footnotesize}
+\nottoggle{ereader}{%
 \ifoot%
 [Applied Crypto Hardening \textbullet{} Draft revision\gitVtags: \gitAbbrevHash{} (\gitCommitterIsoDate) \gitCommitterName]%
 {Applied Crypto Hardening \textbullet{} Draft revision\gitVtags: \gitAbbrevHash{} (\gitCommitterIsoDate) \gitCommitterName}
+}
 \cfoot[]{}
-\ofoot%
-[page \thepage\ of \pageref{LastPage}]%
-{page \thepage\ of \pageref{LastPage}}
+\nottoggle{ereader}{%
+  \ofoot%
+  [page \thepage\ of \pageref{LastPage}]%
+  {page \thepage\ of \pageref{LastPage}}
+}
 \renewcommand*{\chapterpagestyle}{scrheadings}
 \pagestyle{scrheadings}
+\iftoggle{ereader}{%
+  \chead[]{}
+}
 
 % Epigraph / dictum
 \newcommand*{\epigraph}[3][]{\dictum[#3]{#2}\bigskip}
@@ -49,7 +56,11 @@
 \renewcommand*{\dictumauthorformat}[1]{--- #1}
 \addtokomafont{dictumtext}{\itshape}
 \setkomafont{dictumauthor}{\normalfont}
-\renewcommand{\dictumwidth}{8cm}
+\iftoggle{ereader}{%
+  \renewcommand{\dictumwidth}{7cm}
+}{%
+  \renewcommand{\dictumwidth}{8cm}
+}
 
 % Graphics
 %tell TeX where to look for graphics/logos
